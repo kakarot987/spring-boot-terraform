@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${AWS_DB_HOST}:5432/tododb
+    username: ${AWS_DB_USER}
+    password: ${AWS_DB_PASS}
