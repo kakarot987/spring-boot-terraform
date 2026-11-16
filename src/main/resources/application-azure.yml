@@ -1,5 +1,5 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://${AZURE_DB_HOST}:5432/tododb
+  r2dbc:
+    url: r2dbc:postgresql://${AZURE_DB_HOST}:5432/tododb
     username: ${AZURE_DB_USER}
     password: ${AZURE_DB_PASS}
