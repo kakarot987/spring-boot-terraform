@@ -1,5 +1,5 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://${GCP_DB_HOST}:5432/tododb
+  r2dbc:
+    url: r2dbc:postgresql://${GCP_DB_HOST}:5432/tododb
     username: ${GCP_DB_USER}
     password: ${GCP_DB_PASS}
