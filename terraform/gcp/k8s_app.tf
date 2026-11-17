@@ -1,3 +1,6 @@
+# Terraform's Kubernetes provider requires a declared Google client config data source.
+data "google_client_config" "default" {}
+
 # Placeholder for deploying Spring Boot app to GKE using Kubernetes provider
 provider "kubernetes" {
   host                   = google_container_cluster.primary.endpoint

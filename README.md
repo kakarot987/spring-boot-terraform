@@ -36,13 +36,13 @@ README.md
 
 ```bash
 cd terraform/local
-docker compose up -d
+docker compose up --build -d
 ```
 
 - PostgreSQL runs on `localhost:5432`
 - App listens on `localhost:8080`
 
-> Uses Spring profile: `local`
+> Uses Spring profile: `local`, with R2DBC PostgreSQL and automatic initialization of the sample `todos` table. Local Compose passwords are only for an isolated development machine; never reuse them in cloud environments.
 
 ---
 
@@ -186,3 +186,22 @@ MIT. Free to use, modify, and deploy.
 ## 🙌 Credits
 
 Built with 💙 using Spring Boot, Terraform, and cross-cloud DevOps best practices.
+
+---
+
+## Verification and current limitations
+
+The local Compose stack is configured to build the Java application from source,
+wait for PostgreSQL readiness, and connect using R2DBC. A sample `schema.sql`
+initializes the `todos` table under the local profile. Start from
+`terraform/local` with `docker compose up --build`, then exercise `/api/todos`.
+
+**Cloud environments remain illustrative Terraform prototypes.** Adding the
+Google client data source resolves one missing reference, but does not prove
+GKE / Cloud SQL integration, database secrets, networking, cloud images, or
+application deployments are complete. Do not use the example cloud manifests
+for production without full validation. The application now accepts the
+documented AWS/GCP/Azure database environment variables via R2DBC.
+
+No Java tests, Docker build, Terraform validation, or cloud deployment have
+been executed as part of this change.
